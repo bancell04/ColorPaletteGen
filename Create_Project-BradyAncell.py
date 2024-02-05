@@ -299,51 +299,46 @@ while Playing:
             #self.surface = pygame.Surface(self.size)
             #self.surface.blit(self.text, (0, 0))
     #button = Button('Quit')
+    pygame.init()
     display = True
     clock = pygame.time.Clock()
+    paletteDisplay = pygame.display.set_mode([500,500])
+    paletteDisplay.fill([255, 255, 255])
     while display:
-        paletteDisplay = pygame.display.set_mode([500,500])
         paletteDisplay.fill([255, 255, 255])
         x = 0
-        title = "Brady's Color Palette Generator!"
-        width = round((500/int(palette)))
-        font = pygame.font.Font(None , 20)
-        font2 = pygame.font.Font(None, 35)
+        width = round((500 / int(palette)))
+
         for i in range(int(palette)):
-            middle = round(width/2) + x
+            middle = round(width / 2) + x
             font = pygame.font.Font(None , 20)
             font2 = pygame.font.Font(None, 35)
             text1 = font.render(f'{colorFinal[i]}', True, black)
-            text2 = font2.render(f'{title}', True, black)
+            text2 = font2.render(f'Brady\'s Color Palette Generator!', True, black)
             textRect1 = text1.get_rect()
             textRect1.center = (middle, 475)
             textRect2 = text2.get_rect()
-            textRect2.center = (200, 25)
-            pygame.draw.rect(paletteDisplay, (colorFinal[i]), (x, 50, width, 400))
+            textRect2.center = (250, 25)  # Centered horizontally
+            pygame.draw.rect(paletteDisplay, colorFinal[i], (x, 50, width, 400))
             paletteDisplay.blit(text1, textRect1)
             paletteDisplay.blit(text2, textRect2)
-            #paletteDisplay.blit(button.surface, (435, 15))
             x += width
-            middle += middle
+
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if pygame.mouse.get_pressed()[0]:
-                    pygame.quit()
                     display = False
-                    break
             if event.type == pygame.QUIT:
-                pygame.quit()
                 display = False
-                break
-        if display:
-            clock.tick(30)
-            pygame.display.flip() # update the screen
-        continue
-    userI = input('Would you like to generate another palette (Enter: Yes or No)?\n')
-    if userI == 'Yes':
-        continue
-    else:
-        break
+
+        clock.tick(30)
+        pygame.display.flip()  # update the screen
+
+        userI = input('Would you like to generate another palette (Enter: Yes or No)?\n')
+        if userI == 'Yes':
+            continue
+        else:
+            break
     
 print('Thanks for generating!')
 

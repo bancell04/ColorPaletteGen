@@ -1,0 +1,9 @@
+Instructions:
+1 - Launch/Run code (PREFERABLY ON WINDOWS - PyGame will not run on my Mac, but runs fine on my Windows).
+2 - Make sure colors.csv is downloaded in relative path.
+3 - Choose your method of color input (RGB or Color Name).
+4 - Input a color.
+5 - Input the length of the color palette (1-6).
+6 - You can now read and view the output palette in the Pygame window. 
+7 - Tap the ‘X’ or anywhere on the pygame window to close.
+8 - After you close PyGame, choose if you want to continue or not back in IDLE (‘Yes’ or ‘No’).
